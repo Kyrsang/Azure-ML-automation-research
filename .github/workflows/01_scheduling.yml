@@ -20,6 +20,10 @@ jobs:
       run: |
         az extension add -n ml
         az ml -h 
+
+    - name: Create Azure ML Compute Cluster 
+      run: | 
+        az ml compute create --file ./scripts/01_create_compute_cluster.yml 
         
     - name: Create Azure ML Schedule
       run: |
