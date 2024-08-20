@@ -23,7 +23,9 @@ jobs:
         
     - name: Create Azure ML Schedule
       run: |
-        az ml schedule create --file ./scripts/01_scheduling_job.yml --no-wait
+        az ml schedule create --file ./scripts/01_scheduling_job.yml \ 
+        --resource-group inbrein-azure-ml-research \
+        --workspace-name inbrein-azure-ml-research-eunsang
 
     - name: Log out from Azure CLI
       run: az logout
