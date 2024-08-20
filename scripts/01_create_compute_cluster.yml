@@ -1,5 +1,5 @@
 $schema: https://azuremlschemas.azureedge.net/latest/amlCompute.schema.json 
-name: location-example
+name: eunsang-ml-research
 type: amlcompute
 size: STANDARD_D2_v3
 min_instances: 0
