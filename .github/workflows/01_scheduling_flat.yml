@@ -4,6 +4,33 @@ on:
   workflow_dispatch:
 
 jobs:
+  build-and-push-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Log in to Azure CLI
+      uses: azure/login@v2.1.0
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Log in to Azure Container Registry
+      run: |
+        az acr login --name eunsangacr
+
+    - name: Build Docker image
+      run: |
+        docker build -t eunsangacr.azurecr.io/azureml-with-azcli:latest -f ./configs/Azure-CLI-Environment/Dockerfile ./configs/Azure-CLI-Environment
+
+    - name: Push Docker image to ACR
+      run: |
+        docker push eunsangacr.azurecr.io/azureml-with-azcli:latest
+
+    - name: Log out from Azure CLI
+      run: az logout
+
   create-schedule:
     runs-on: ubuntu-latest
 
@@ -31,3 +58,4 @@ jobs:
 
     - name: Log out from Azure CLI
       run: az logout
+
