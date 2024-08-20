@@ -2,6 +2,16 @@ name: Azure ML Scheduling
 
 on:
   workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action for Azure ML Compute Cluster'
+        required: true
+        default: 'update'
+        type: choice
+        options:
+          - create
+          - update
+          - skip
 
 jobs:
   create-schedule:
@@ -21,10 +31,15 @@ jobs:
         az extension add -n ml
         az ml -h 
 
-    - name: Create Azure ML Compute Cluster 
-      run: | 
-        az ml compute create --file ./scripts/01_create_compute_cluster.yml --resource-group inbrein-azure-ml-research --workspace-name inbrein-azure-ml-research-eunsang
+    - name: Create or Update Azure ML Compute Cluster
+      if: ${{ inputs.action == 'create' || inputs.action == 'update' }}
+      run: |
+        az ml compute ${{ inputs.action }} --file ./scripts/01_create_compute_cluster.yml --resource-group inbrein-azure-ml-research --workspace-name inbrein-azure-ml-research-eunsang
         
+    - name: Skip Azure ML Compute Cluster creation
+      if: ${{ inputs.action == 'skip' }}
+      run: echo "Skipping Azure ML Compute Cluster creation"
+
     - name: Create Azure ML Schedule
       run: |
         az ml schedule create --file ./scripts/01_scheduling_job.yml --resource-group inbrein-azure-ml-research --workspace-name inbrein-azure-ml-research-eunsang
