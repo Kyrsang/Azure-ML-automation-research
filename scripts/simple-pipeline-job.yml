@@ -24,7 +24,7 @@ jobs:
     environment: azureml://registries/azureml/environments/sklearn-1.5/labels/latest
     inputs:
       world_input: ${{parent.jobs.b.outputs.world_output}}
-
+      
   d:
     command: |
       # see if authenticated 
@@ -32,4 +32,5 @@ jobs:
       
       # Example: List datasets in the Azure ML workspace
       az ml data list --workspace-name your_workspace --resource-group your_resource_group
-    environment: azureml://registries/azureml/environments/sklearn-1.5/labels/latest
+    environment: 
+      image: eunsangacr.azurecr.io/azureml-with-azcli:latest  # Referencing the ACR image
