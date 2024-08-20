@@ -1,10 +1,10 @@
-name: Azure CLI Interaction
+name: Azure ML Scheduling  
 
 on:
   workflow_dispatch:
 
 jobs:
-  azure-cli:
+  create-schedule:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,11 +16,9 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Run Azure CLI Command
+    - name: Create Azure ML Schedule
       run: |
-        # Example Azure CLI commands
-        az account show
-        az group list
+        az ml schedule create --file ./scripts/01_scheduling_job.yml --no-wait
 
     - name: Log out from Azure CLI
       run: az logout
