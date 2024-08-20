@@ -22,6 +22,11 @@ on:
           - update
           - skip
 
+      schedule_name:
+        description: 'Name of the Azure ML Schedule to update (required if updating schedule)'
+        required: false
+        default: ''
+      
 jobs:
   manage-ml-resources:
     runs-on: ubuntu-latest
@@ -49,10 +54,15 @@ jobs:
       if: ${{ inputs.compute_cluster_action == 'skip' }}
       run: echo "Skipping Azure ML Compute Cluster action"
 
-    - name: Manage Azure ML Schedule
-      if: ${{ inputs.schedule_action != 'skip' }}
+    - name: Create Azure ML Schedule
+      if: ${{ inputs.schedule_action == 'create' }}
       run: |
-        az ml schedule ${{ inputs.schedule_action }} --file ./scripts/01_scheduling_job.yml --resource-group inbrein-azure-ml-research --workspace-name inbrein-azure-ml-research-eunsang
+        az ml schedule create --file ./scripts/01_scheduling_job.yml --resource-group inbrein-azure-ml-research --workspace-name inbrein-azure-ml-research-eunsang
+
+    - name: Update Azure ML Schedule
+      if: ${{ inputs.schedule_action == 'update' }}
+      run: |
+        az ml schedule update --name ${{ inputs.schedule_name }} --file ./scripts/01_scheduling_job.yml --resource-group inbrein-azure-ml-research --workspace-name inbrein-azure-ml-research-eunsang
 
     - name: Skip Azure ML Schedule
       if: ${{ inputs.schedule_action == 'skip' }}
