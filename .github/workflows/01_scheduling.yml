@@ -23,7 +23,7 @@ jobs:
 
     - name: Create Azure ML Compute Cluster 
       run: | 
-        az ml compute create --file ./scripts/01_create_compute_cluster.yml 
+        az ml compute create --file ./scripts/01_create_compute_cluster.yml --resource-group inbrein-azure-ml-research --workspace-name inbrein-azure-ml-research-eunsang
         
     - name: Create Azure ML Schedule
       run: |
