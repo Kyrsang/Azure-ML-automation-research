@@ -19,6 +19,7 @@ jobs:
     - name: Install Azure ML CLI extension
       run: |
         az extension add -n ml
+        az ml -h 
         
     - name: Create Azure ML Schedule
       run: |
