@@ -16,6 +16,10 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Install Azure ML CLI extension
+      run: |
+        az extension add -n ml
+        
     - name: Create Azure ML Schedule
       run: |
         az ml schedule create --file ./scripts/01_scheduling_job.yml --no-wait
