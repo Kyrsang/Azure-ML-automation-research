@@ -11,7 +11,7 @@ jobs:
 
       # Create dataset 
       az ml data create --name iris-dataset \
-        --path ./datasets/iris.csv \
+        --path /app/datasets/iris.csv \
         --type uri_file \
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research
