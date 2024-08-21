@@ -5,9 +5,6 @@ compute: azureml:eunsang-ml-research
 
 inputs:
   hello_string_top_level_input: "hello world"
-  azure_client_id: ${{ parent.parameters.azure_client_id }}        
-  azure_client_secret: ${{ parent.parameters.azure_client_secret }}  
-  azure_tenant_id: ${{ parent.parameters.azure_tenant_id }}        
 
 jobs:
   a:
