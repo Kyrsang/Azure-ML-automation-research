@@ -96,10 +96,7 @@ jobs:
       run: |
         az ml schedule create --file ./scripts/01_scheduling_job.yml \
         --resource-group inbrein-azure-ml-research \
-        --workspace-name inbrein-azure-ml-research-eunsang \
-        --set "parameters.azure_client_id=${{ secrets.AZURE_CLIENT_ID }}" \
-        --set "parameters.azure_client_secret=${{ secrets.AZURE_CLIENT_SECRET }}" \
-        --set "parameters.azure_tenant_id=${{ secrets.AZURE_TENANT_ID }}"
+        --workspace-name inbrein-azure-ml-research-eunsang
           
     - name: Log out from Azure CLI
       run: az logout
