@@ -12,7 +12,12 @@ jobs:
       # Authenticate with Azure
       az login --service-principal -u 92e77697-5e5b-435e-8c8e-b3524e21a8ce -p 1fR8Q~fCCxSyxONCREmbXVWITmnpz_xVvHV6nb6o --tenant 5e0527d0-b0a8-46e9-b753-db3f51fb4dc2
       
-
+      # Create dataset 
+      az ml data create --name iris-dataset \
+        --path ./datasets/iris.csv \
+        --type uri_file \
+        --workspace-name inbrein-azure-ml-research-eunsang \
+        --resource-group inbrein-azure-ml-research
         
     environment: 
       image: eunsangacr.azurecr.io/azureml-with-azcli:latest 
