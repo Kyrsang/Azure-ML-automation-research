@@ -64,18 +64,29 @@ jobs:
         --resource-group inbrein-azure-ml-research \
         --name inbrein-azure-ml-research-eunsang
 
-    - name: Configure workspace permission to use managed identity   
+    - name: Get the ACR instance name
+      id: get_acr_instance_name
       run: |
-        # Get the ACR instance name
         acr_instance_name=$(az ml workspace show \
           --name inbrein-azure-ml-research-eunsang \
           --resource-group inbrein-azure-ml-research \
           --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }} \
           --query container_registry \
           -o tsv)
-        
-        # Disable admin user to use managed identity
-        az acr update --name $(basename $acr_instance_name) --admin-enabled false
+
+        # Check if the acr_instance_name is empty
+        if [ -z "$acr_instance_name" ]; then
+          echo "ACR instance name not found."
+          exit 1
+        fi
+
+        # Set the environment variable
+        echo "ACR_INSTANCE_NAME=$(basename $acr_instance_name)" >> $GITHUB_ENV
+
+    - name: Disable admin user to use managed identity
+      run: |
+        az acr update --name ${{ env.ACR_INSTANCE_NAME }} --admin-enabled false
+
     
     - name: Create Azure ML Compute Cluster 
       run: | 
