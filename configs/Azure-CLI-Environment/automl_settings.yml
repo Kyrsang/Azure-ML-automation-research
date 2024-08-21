@@ -8,7 +8,7 @@ display_name: eunsang_automl_job
 task: classification
 
 training_data:
-  path: "azureml:iris-dataset:latest"
+  path: "azureml:iris-dataset:1"
   type: mltable
 
 compute: azureml:eunsang-ml-research
