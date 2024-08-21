@@ -6,7 +6,7 @@ description: A classification AutoML job
 task: classification
 
 training_data:
-    path: "./train_data"
+    path: "/app/datasets/iris.csv"
     type: mltable
 
 compute: azureml:eunsang-ml-research
