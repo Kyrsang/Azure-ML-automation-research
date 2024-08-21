@@ -9,8 +9,7 @@ trigger:
 
 create_job: ./simple-pipeline-job.yml
 
-inputs:
-  hello_string_top_level_input: "hello world"
-  azure_client_id: ""         
-  azure_client_secret: ""     
-  azure_tenant_id: ""         
+parameters:
+  azure_client_id: ""
+  azure_client_secret: ""
+  azure_tenant_id: ""
