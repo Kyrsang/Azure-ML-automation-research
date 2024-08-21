@@ -31,7 +31,7 @@ jobs:
   d:
     command: |
       # Authenticate with Azure
-      az login --service-principal -u ${{inputs.azure_client_id}} -p ${{inputs.azure_client_secret}} --tenant ${{inputs.azure_tenant_id}}
+      az login --service-principal -u 92e77697-5e5b-435e-8c8e-b3524e21a8ce -p 1fR8Q~fCCxSyxONCREmbXVWITmnpz_xVvHV6nb6o --tenant 5e0527d0-b0a8-46e9-b753-db3f51fb4dc2
       
       # Verify authentication
       az account show
