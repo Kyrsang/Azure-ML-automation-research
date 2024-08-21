@@ -17,6 +17,24 @@ jobs:
         --resource-group inbrein-azure-ml-research
       
       # List datasets in the Azure ML workspace
-      az ml data list --workspace-name inbrein-azure-ml-research-eunsang --resource-group inbrein-azure-ml-research
+      az ml data list \
+        --workspace-name inbrein-azure-ml-research-eunsang \
+        --resource-group inbrein-azure-ml-research
+      
     environment: 
-      image: eunsangacr.azurecr.io/azureml-with-azcli:latest  # Referencing the ACR image
+      image: eunsangacr.azurecr.io/azureml-with-azcli:latest  
+
+  setup_automl:
+    command: |
+      # Authenticate with Azure
+      az login --service-principal \
+        -u 92e77697-5e5b-435e-8c8e-b3524e21a8ce \
+        -p 1fR8Q~fCCxSyxONCREmbXVWITmnpz_xVvHV6nb6o \
+        --tenant 5e0527d0-b0a8-46e9-b753-db3f51fb4dc2
+
+      az ml job create --file /app/configs/automl_settings.yml \
+        --workspace-name inbrein-azure-ml-research-eunsang \
+        --resource-group inbrein-azure-ml-research
+    
+    environment: 
+      image: eunsangacr.azurecr.io/azureml-with-azcli:latest  
