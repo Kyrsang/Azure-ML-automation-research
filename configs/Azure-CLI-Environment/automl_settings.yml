@@ -16,7 +16,6 @@ compute: azureml:eunsang-ml-research
 primary_metric: accuracy
 target_column_name: y
 n_cross_validations: 5
-enable_model_explainability: True
 
 limits:
   timeout_minutes: 600
