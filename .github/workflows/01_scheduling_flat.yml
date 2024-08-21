@@ -61,8 +61,8 @@ jobs:
     - name: Sync keys for dependent resources
       run: |
         az ml workspace sync-keys \
-        --resource-group inbrein-azure-ml-research \
-        --workspace-name inbrein-azure-ml-research-eunsang
+        -g inbrein-azure-ml-research \
+        -n inbrein-azure-ml-research-eunsang
 
     - name: Create Azure ML Compute Cluster 
       run: | 
