@@ -61,8 +61,20 @@ jobs:
     - name: Sync keys for dependent resources
       run: |
         az ml workspace sync-keys \
-        -g inbrein-azure-ml-research \
-        -n inbrein-azure-ml-research-eunsang
+        --resource-group inbrein-azure-ml-research \
+        --name inbrein-azure-ml-research-eunsang
+
+    - name: Configure workspace permission to use managed identity   
+      run: |
+        ACR_INSTANCE_NAME=$(az ml workspace show \
+          --resource-group inbrein-azure-ml-research \
+          --name inbrein-azure-ml-research-eunsang \
+          --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }} \
+          --query container_registry \
+          -o tsv)
+        
+        # disable admin user to use managed identity 
+        az acr update --name $(basename "$ACR_INSTANCE_NAME") --admin-enabled false
 
     - name: Create Azure ML Compute Cluster 
       run: | 
