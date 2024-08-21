@@ -3,6 +3,8 @@ type: automl
 
 experiment_name: Default
 description: A classification AutoML job
+display_name: eunsang_automl_job
+
 task: classification
 
 training_data:
