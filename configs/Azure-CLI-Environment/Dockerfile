@@ -17,6 +17,9 @@ WORKDIR /app
 # Copy the dataset
 COPY iris.csv /app/datasets/iris.csv
 
+# Copy automl config file 
+COPY automl_settings.yml /app/configs/automl_settings.yml
+
 # Log in to Azure
 RUN az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
 
