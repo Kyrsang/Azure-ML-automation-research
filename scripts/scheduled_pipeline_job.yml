@@ -14,17 +14,20 @@ jobs:
         --resource-group inbrein-azure-ml-research \
         --query "path" -o tsv)
 
-      # Echo the output to be captured as a pipeline output
-      echo $DATA_OUTPUT
+      # Save the path to an output file
+      echo $DATA_OUTPUT > ${{outputs.dataset_path}}/dataset_path.txt
 
     environment:
       image: eunsangacr.azurecr.io/azureml-with-azcli:latest
     outputs:
-      dataset_path: ${{parent.jobs.prepare_dataset.outputs.dataset_path}}
+      dataset_path:
 
   setup_automl:
     command: |
-      # Dynamically update the training_data.path in the automl_settings.yml file
+      # Read the dataset path from the input file
+      DATA_PATH=$(cat ${{inputs.dataset_input}}/dataset_path.txt)
+
+      # Create automl job using the dataset path
       az ml job create --file /app/configs/automl_settings.yml \
         --set training_data.path=${{inputs.dataset_path}} \
         --workspace-name inbrein-azure-ml-research-eunsang \
@@ -33,4 +36,4 @@ jobs:
     environment:
       image: eunsangacr.azurecr.io/azureml-with-azcli:latest  
     inputs:
-      dataset_path: ${{parent.jobs.prepare_dataset.outputs.dataset_path}}
+      dataset_input: ${{parent.jobs.prepare_dataset.outputs.dataset_path}}
