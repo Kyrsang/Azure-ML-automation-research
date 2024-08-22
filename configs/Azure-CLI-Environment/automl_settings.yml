@@ -8,7 +8,7 @@ display_name: eunsang_automl_job
 task: classification
 
 training_data:
-  path: "https://inbreinazureml9455092953.blob.core.windows.net/azureml-blobstore-88907657-f5b2-4882-9898-7224649e9c1f/LocalUpload/e393d2d844017528b808d11cdf0ceb8a/iris.csv"
+  path: "azureml:iris-dataset:1"
   type: mltable
 
 compute: azureml:eunsang-ml-research
