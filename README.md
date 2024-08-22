@@ -1,8 +1,5 @@
 # Azure-ML-automation-research
 
-
-# Azure-ML-automation-research
-
 ### `pipelineJob` Definition  
 ```mermaid
 flowchart TD
