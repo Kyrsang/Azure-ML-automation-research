@@ -22,7 +22,6 @@ jobs:
       image: eunsangacr.azurecr.io/azureml-with-azcli:latest  
 
   setup_automl:
-    dependsOn: prepare_dataset
     command: |
       # Create automl job 
       az ml job create --file /app/configs/automl_settings.yml \
