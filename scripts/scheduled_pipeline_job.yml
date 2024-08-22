@@ -7,22 +7,23 @@ jobs:
   prepare_dataset:
     command: |
 
-      az ml data create --name iris-dataset \
-        --path /app/datasets/iris.csv \
-        --type uri_file \
-        --workspace-name inbrein-azure-ml-research-eunsang \
-        --resource-group inbrein-azure-ml-research
-        
-      # Create dataset and extract path
+      # Create dataset and capture the JSON response
       DATA_OUTPUT=$(az ml data create --name iris-dataset \
         --path /app/datasets/iris.csv \
         --type uri_file \
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research \
-        --query "path" -o tsv)
+        --output json)
 
-      # Save the path to an output file
-      echo $DATA_OUTPUT > ${{outputs.dataset_path}}/dataset_path.txt
+      # Extract the name and version using jq
+      DATASET_NAME=$(echo $DATA_OUTPUT | jq -r '.name')
+      DATASET_VERSION=$(echo $DATA_OUTPUT | jq -r '.version')
+
+      # Format the output as azureml:<name>:<version>
+      DATASET_PATH="azureml:${DATASET_NAME}:${DATASET_VERSION}"
+
+      # Save the formatted path to an output file
+      echo $DATASET_PATH > ${{outputs.dataset_path}}/dataset_path.txt
 
     environment:
       image: eunsangacr.azurecr.io/azureml-with-azcli:latest
@@ -43,4 +44,4 @@ jobs:
     environment:
       image: eunsangacr.azurecr.io/azureml-with-azcli:latest  
     inputs:
-      dataset_input: ${{parent.jobs.prepare_dataset.outputs.dataset_path}}  # Correctly referencing the output from the first job
+      dataset_input: ${{parent.jobs.prepare_dataset.outputs.dataset_path}} 
