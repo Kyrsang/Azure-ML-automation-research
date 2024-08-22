@@ -6,27 +6,31 @@ compute: azureml:eunsang-ml-research
 jobs:
   prepare_dataset:
     command: |
-      # Create dataset 
-      az ml data create --name iris-dataset \
+      # Create dataset and extract path
+      DATA_OUTPUT=$(az ml data create --name iris-dataset \
         --path /app/datasets/iris.csv \
         --type uri_file \
         --workspace-name inbrein-azure-ml-research-eunsang \
-        --resource-group inbrein-azure-ml-research
-      
-      # List datasets in the Azure ML workspace
-      az ml data list \
-        --workspace-name inbrein-azure-ml-research-eunsang \
-        --resource-group inbrein-azure-ml-research
-      
-    environment: 
-      image: eunsangacr.azurecr.io/azureml-with-azcli:latest  
+        --resource-group inbrein-azure-ml-research \
+        --query "path" -o tsv)
+
+      # Echo the output to be captured as a pipeline output
+      echo $DATA_OUTPUT
+
+    environment:
+      image: eunsangacr.azurecr.io/azureml-with-azcli:latest
+    outputs:
+      dataset_path: ${{parent.jobs.prepare_dataset.outputs.dataset_path}}
 
   setup_automl:
     command: |
-      # Create automl job 
+      # Dynamically update the training_data.path in the automl_settings.yml file
       az ml job create --file /app/configs/automl_settings.yml \
+        --set training_data.path=${{inputs.dataset_path}} \
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research
-    
-    environment: 
+
+    environment:
       image: eunsangacr.azurecr.io/azureml-with-azcli:latest  
+    inputs:
+      dataset_path: ${{parent.jobs.prepare_dataset.outputs.dataset_path}}
