@@ -6,6 +6,13 @@ compute: azureml:eunsang-ml-research
 jobs:
   prepare_dataset:
     command: |
+
+      az ml data create --name iris-dataset \
+        --path /app/datasets/iris.csv \
+        --type uri_file \
+        --workspace-name inbrein-azure-ml-research-eunsang \
+        --resource-group inbrein-azure-ml-research
+        
       # Create dataset and extract path
       DATA_OUTPUT=$(az ml data create --name iris-dataset \
         --path /app/datasets/iris.csv \
