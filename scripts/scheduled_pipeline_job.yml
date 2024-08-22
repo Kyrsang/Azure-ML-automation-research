@@ -9,8 +9,8 @@ jobs:
 
       # Create dataset and extract path
       DATA_OUTPUT=$(az ml data create --name iris-dataset \
-        --path /app/datasets/iris.csv \
-        --type uri_file \
+        --path /app/datasets \
+        --type mltable \
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research \
         --query "path" -o tsv)
