@@ -30,7 +30,6 @@ jobs:
 
       # Create automl job using the dataset path
       az ml job create --file /app/configs/automl_settings.yml \
-        # --set training_data.path=${DATA_PATH} \
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research
 
