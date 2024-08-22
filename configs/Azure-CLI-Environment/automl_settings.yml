@@ -9,7 +9,7 @@ task: classification
 
 training_data:
   path: "azureml:iris-dataset:1"
-  type: mltable
+  type: uri_file
 
 compute: azureml:eunsang-ml-research
 
