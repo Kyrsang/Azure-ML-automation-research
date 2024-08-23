@@ -85,17 +85,17 @@ jobs:
   register_automl:
     command: | 
       # Define the download path
-      DOWNLOAD_PATH=./downloaded_artifacts
+      downloaded_artifacts
 
       # Download the model artifact to the specified directory
       az ml job download --name $(cat ${{inputs.monitored_job_name}}/job_name.txt) \
-        --all --download-path $DOWNLOAD_PATH \
+        --all --download-path ./downloaded_artifacts \
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research
         
       # Register the model using the pre-configured YAML file
       az ml model create -f /app/configs/best_model_settings.yml \
-        --set path=$DOWNLOAD_PATH/named-outputs/best_model/model.pkl \
+        --set path=downloaded_artifacts/named-outputs/best_model/model.pkl \
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research
       
