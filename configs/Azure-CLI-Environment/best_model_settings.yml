@@ -1,0 +1,4 @@
+$schema: https://azuremlschemas.azureedge.net/latest/model.schema.json
+name: register-model-from-artifact
+path: ./artifacts/outputs/featurization/pipeline/model.pkl
+description: Register an automl model from train artifact   
