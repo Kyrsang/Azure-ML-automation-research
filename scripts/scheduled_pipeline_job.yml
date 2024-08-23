@@ -62,20 +62,21 @@ jobs:
         JOB_STATUS=$(az ml job show --name $JOB_NAME \
           --query "status" -o tsv \
           --workspace-name inbrein-azure-ml-research-eunsang \
-          --resource-group inbrein-azure-ml-research)
+          --resource-group inbrein-azure-ml-research 2>&1) # Capture standard error
+
+        # Check for errors during status check
+        if [ $? -ne 0 ]; then
+          echo "Error checking job status: $JOB_STATUS"
+          exit 1
+        fi
 
         # If the job is still running, wait for a few minutes before checking again
         if [ "$JOB_STATUS" != "Completed" ]; then
           echo "Job status: $JOB_STATUS. Waiting for 5 minutes before checking again..."
-          sleep 180  # Sleep for 3 minutes
+          sleep 300  # Sleep for 5 minutes
         fi
       done
-
-      # Retrieve the best model URI after completion
-      az ml job show --name $JOB_NAME \
-        --workspace-name inbrein-azure-ml-research-eunsang \
-        --resource-group inbrein-azure-ml-research
-  
+      
     environment:
       image: eunsangacr.azurecr.io/azureml-with-azcli:latest
     inputs:
