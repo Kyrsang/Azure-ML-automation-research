@@ -11,7 +11,7 @@ flowchart TD
 
         subgraph Azure ML
                 C(Compute)
-                subgraph Scheduling_Job 
+                subgraph Scheduling_Job
                     A(pipelineJob) 
                 end 
         end 
