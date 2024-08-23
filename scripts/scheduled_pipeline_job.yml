@@ -3,6 +3,9 @@ type: pipeline
 display_name: scheduled_pipeline
 compute: azureml:eunsang-ml-research
 
+settings: 
+  force_rerun: True 
+  
 jobs:
   prepare_dataset:
     command: |
