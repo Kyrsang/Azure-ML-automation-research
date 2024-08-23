@@ -37,7 +37,7 @@ flowchart TD
 ```mermaid
 flowchart TD
     subgraph pipelineJob
-        A[Prepare Data]
+        A[Prepare data]
         B[Create AutoML training Job]
         C[Monitor train result]
         D[Register best model]
@@ -45,25 +45,27 @@ flowchart TD
     end 
 
     F(datastore/iris mltable)
-    G(model training...) 
+    G(model training... about 12 mins.) 
     
     A --> B 
     C --> D 
     D --> E 
     A --> F 
-    B --> G  
-    G --> |takes about 12 mins.|G 
-    
+    B --> G     
     G --Completed---> C
 ```
 
 <details>
-  <summary>Result view of `az ml data create`</summary>
+  <summary>Result view of `Prepare Data` step</summary>
   <img src="https://github.com/user-attachments/assets/e4399385-8bf4-4255-b986-e2ae36f61fe5"></img>
 </details>
 
 <details>
-  <summary>Result view of `az ml job create`</summary>
+  <summary>Result view of `Create AutoML training Job` step</summary>
   <img src="https://github.com/user-attachments/assets/9de1490d-43e9-4dd4-b71d-2ff8b68629d8"></img>
 </details>
 
+<details>
+  <summary>Result view of `Monitor train result` step</summary>
+  <img src="https://github.com/user-attachments/assets/885619ff-483d-4e84-9ec7-71b3c2340ea3"></img>
+</details>
