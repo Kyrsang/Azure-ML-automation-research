@@ -51,7 +51,7 @@ jobs:
   monitor_automl:
     command: |
       # Read the AutoML job name from the input file
-      JOB_NAME=$(cat ${{inputs.automl_job_name_input}}/job_name.txt)
+      JOB_NAME=$(cat ${{inputs.automl_job_name}}/job_name.txt)
 
       # Initialize job status
       JOB_OUTPUT=""
