@@ -45,7 +45,7 @@ flowchart TD
     end 
 
     F(datastore/iris mltable)
-    G(model training... about 12 mins.) 
+    G(model training... for about 12 mins.) 
     
     A --> B 
     C --> D 
@@ -56,7 +56,7 @@ flowchart TD
 ```
 
 <details>
-  <summary>Result view of `Prepare Data` step</summary>
+  <summary>Result view of `Prepare data` step</summary>
   <img src="https://github.com/user-attachments/assets/e4399385-8bf4-4255-b986-e2ae36f61fe5"></img>
 </details>
 
