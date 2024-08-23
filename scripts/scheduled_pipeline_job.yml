@@ -51,28 +51,30 @@ jobs:
   monitor_automl:
     command: |
       # Read the AutoML job name from the input file
-      JOB_NAME=$(cat ${{inputs.automl_job_name}}/job_name.txt)
+      JOB_NAME=$(cat ${{inputs.automl_job_name_input}}/job_name.txt)
 
       # Initialize job status
-      JOB_STATUS=""
+      JOB_OUTPUT=""
 
       # Loop until the job is completed
-      while [ "$JOB_STATUS" != "Completed" ]; do
+      while true; do
         # Check the job status
-        JOB_STATUS=$(az ml job show --name $JOB_NAME \
-          --query "status" -o tsv \
+        JOB_OUTPUT=$(az ml job show --name $JOB_NAME \
           --workspace-name inbrein-azure-ml-research-eunsang \
-          --resource-group inbrein-azure-ml-research 2>&1) # Capture standard error
+          --resource-group inbrein-azure-ml-research 2>&1)
 
         # Check for errors during status check
-        if [ $? -ne 0 ]; then
-          echo "Error checking job status: $JOB_STATUS"
+        if echo "$JOB_OUTPUT" | grep -q "Failed"; then
+          echo "Error checking job status: $JOB_OUTPUT"
           exit 1
         fi
 
-        # If the job is still running, wait for a few minutes before checking again
-        if [ "$JOB_STATUS" != "Completed" ]; then
-          echo "Job status: $JOB_STATUS. Waiting for 5 minutes before checking again..."
+        # Check if the job status contains 'Completed'
+        if echo "$JOB_OUTPUT" | grep -q "Completed"; then
+          echo "Job status: Completed. Exiting loop..."
+          break
+        else
+          echo "Job status: Not completed yet. Waiting for 5 minutes before checking again..."
           sleep 300  # Sleep for 5 minutes
         fi
       done
