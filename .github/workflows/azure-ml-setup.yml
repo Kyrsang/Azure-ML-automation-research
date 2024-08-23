@@ -68,16 +68,7 @@ jobs:
           --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }} \
           --query container_registry \
           -o tsv)
-    
-        # Check if the ACR instance name was found
-        if [ -z "$acr_instance_name" ]; then
-          echo "ACR instance name not found."
-          exit 1
-        fi
-    
-        # Set the environment variable
-        echo "ACR_INSTANCE_NAME=$(basename $acr_instance_name)" >> $GITHUB_ENV
-    
+          
         # Disable admin user to use managed identity
         az acr update --name $(basename $acr_instance_name) --admin-enabled false
     
