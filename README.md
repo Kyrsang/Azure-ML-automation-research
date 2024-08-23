@@ -53,6 +53,7 @@ flowchart TD
     A --> F 
     B --> G     
     G --Completed---> C
+    F --> G
 ```
 
 <details>
