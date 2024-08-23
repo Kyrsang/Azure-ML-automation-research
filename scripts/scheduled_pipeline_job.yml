@@ -85,7 +85,7 @@ jobs:
   register_automl:
     command: | 
       # Download the model artifact
-      az ml job download --name $(cat ${{inputs.monitored_job_name}}/job_name.txt) \
+      az ml job download --name $(cat ${{inputs.monitored_job_name}}/job_name.txt) --all \
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research
         
