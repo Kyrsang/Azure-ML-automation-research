@@ -51,7 +51,7 @@ jobs:
   monitor_automl:
     command: |
       # Read the AutoML job name from the input file
-      JOB_NAME=$(cat ${{inputs.automl_job_name_input}}/job_name.txt)
+      JOB_NAME=$(cat ${{inputs.automl_job_name}}/job_name.txt)
 
       # Initialize job status
       JOB_STATUS=""
@@ -80,7 +80,7 @@ jobs:
     environment:
       image: eunsangacr.azurecr.io/azureml-with-azcli:latest
     inputs:
-      automl_job_name_input: ${{parent.jobs.setup_automl.outputs.automl_job_name}}
+      automl_job_name: ${{parent.jobs.setup_automl.outputs.automl_job_name}}
     outputs:
       model_path:
 
