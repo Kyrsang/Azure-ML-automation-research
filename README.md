@@ -43,7 +43,13 @@ flowchart TD
         D[az ml endpoint create]
     end 
 
+    E(datastore/iris mltable)
+    F(automl best model)
+
     A --> B 
     B --> C 
     C --> D
+
+    A --> E
+    B --> F
 ```
