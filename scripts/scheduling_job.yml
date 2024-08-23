@@ -7,4 +7,7 @@ trigger:
   type: cron
   expression: "0 */2 * * *"   # every 2 hours
 
+settings: 
+  force_rerun: True 
+  
 create_job: ./scheduled_pipeline_job.yml
