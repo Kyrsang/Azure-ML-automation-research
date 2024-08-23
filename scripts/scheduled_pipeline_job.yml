@@ -68,7 +68,7 @@ jobs:
           echo "Job status: Completed. Exiting loop..."
           break
         else
-          echo "Job status: Not completed yet. Waiting for 5 minutes before checking again..."
+          echo "Job status: Not completed yet. Waiting for 3 minutes before checking again..."
           sleep 180  # Sleep for 3 minutes
         fi
       done
