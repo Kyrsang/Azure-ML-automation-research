@@ -11,7 +11,7 @@ flowchart TD
 
         subgraph Azure ML
                 C(Compute)
-                subgraph Scheduling_Job
+                subgraph Scheduling_Job 
                     A(pipelineJob) 
                 end 
         end 
@@ -40,7 +40,7 @@ flowchart TD
         A[Prepare data]
         B[Create AutoML training Job]
         C[Monitor train result]
-        D[Register best model]
+        D[Register best model] 
         E[Publish endpoint]
     end 
 
@@ -70,3 +70,5 @@ flowchart TD
   <summary>Result view of `Monitor train result` step</summary>
   <img src="https://github.com/user-attachments/assets/885619ff-483d-4e84-9ec7-71b3c2340ea3"></img>
 </details>
+
+[Register and deploy model ref.](https://learn.microsoft.com/en-us/azure/machine-learning/tutorial-auto-train-image-models?view=azureml-api-2&tabs=cli#register-and-deploy-model)
