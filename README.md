@@ -37,11 +37,11 @@ flowchart TD
 ```mermaid
 flowchart TD
     subgraph pipelineJob
-        A[Prepare data]
-        B[Create AutoML training Job]
-        C[Monitor train result]
-        D[Register best model] 
-        E[Publish endpoint]
+        A[prepare_dataset]
+        B[setup_automl]
+        C[monitor_automl]
+        D[register_automl] 
+        E[publish_endpoint]
     end 
 
     F(datastore/iris mltable)
@@ -57,17 +57,17 @@ flowchart TD
 ```
 
 <details>
-  <summary>Result view of `Prepare data` step</summary>
+  <summary>Result view of `prepare_dataset` step</summary>
   <img src="https://github.com/user-attachments/assets/e4399385-8bf4-4255-b986-e2ae36f61fe5"></img>
 </details>
 
 <details>
-  <summary>Result view of `Create AutoML training Job` step</summary>
+  <summary>Result view of `setup_automl` step</summary>
   <img src="https://github.com/user-attachments/assets/9de1490d-43e9-4dd4-b71d-2ff8b68629d8"></img>
 </details>
 
 <details>
-  <summary>Result view of `Monitor train result` step</summary>
+  <summary>Result view of `monitor_automl` step</summary>
   <img src="https://github.com/user-attachments/assets/885619ff-483d-4e84-9ec7-71b3c2340ea3"></img>
 </details>
 
