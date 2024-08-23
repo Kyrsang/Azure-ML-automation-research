@@ -87,7 +87,7 @@ jobs:
       
       # Download the model artifact to the specified directory
       az ml job download --name $(cat ${{inputs.monitored_job_name}}/job_name.txt) \
-        --all --download-path ./downloaded_artifacts \
+        --all --download-path ./app/configs/downloaded_artifacts \
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research
         
