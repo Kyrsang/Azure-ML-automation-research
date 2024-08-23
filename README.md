@@ -37,21 +37,24 @@ flowchart TD
 ```mermaid
 flowchart TD
     subgraph pipelineJob
-        A[az ml data create]
-        B[az ml job create]
-        C[az ml model register]
-        D[az ml endpoint create]
+        A[Prepare Data]
+        B[Create AutoML training Job]
+        C[Monitor train result]
+        D[Register best model]
+        E[Publish endpoint]
     end 
 
-    E(datastore/iris mltable)
-    F(automl best model)
-
+    F(datastore/iris mltable)
+    G(model training...) 
+    
     A --> B 
-    B --> C 
-    C --> D
-
-    A --> E
-    B --> F
+    C --> D 
+    D --> E 
+    A --> F 
+    B --> G  
+    G --> |takes about 12 mins.|G 
+    
+    G --Completed---> C
 ```
 
 <details>
@@ -63,3 +66,4 @@ flowchart TD
   <summary>Result view of `az ml job create`</summary>
   <img src="https://github.com/user-attachments/assets/9de1490d-43e9-4dd4-b71d-2ff8b68629d8"></img>
 </details>
+
