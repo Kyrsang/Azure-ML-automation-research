@@ -53,3 +53,13 @@ flowchart TD
     A --> E
     B --> F
 ```
+
+<details>
+  <summary>Result view of `az ml data create`</summary>
+  <img src="https://github.com/user-attachments/assets/e4399385-8bf4-4255-b986-e2ae36f61fe5"></img>
+</details>
+
+<details>
+  <summary>Result view of `az ml data create`</summary>
+  <img src="https://github.com/user-attachments/assets/9de1490d-43e9-4dd4-b71d-2ff8b68629d8"></img>
+</details>
