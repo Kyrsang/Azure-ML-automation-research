@@ -63,12 +63,6 @@ jobs:
           --workspace-name inbrein-azure-ml-research-eunsang \
           --resource-group inbrein-azure-ml-research 2>&1)
 
-        # Check for errors during status check
-        if echo "$JOB_OUTPUT" | grep -q "Failed"; then
-          echo "Error checking job status: $JOB_OUTPUT"
-          exit 1
-        fi
-
         # Check if the job status contains 'Completed'
         if echo "$JOB_OUTPUT" | grep -q "Completed"; then
           echo "Job status: Completed. Exiting loop..."
