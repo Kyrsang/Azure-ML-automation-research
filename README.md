@@ -60,6 +60,6 @@ flowchart TD
 </details>
 
 <details>
-  <summary>Result view of `az ml data create`</summary>
+  <summary>Result view of `az ml job create`</summary>
   <img src="https://github.com/user-attachments/assets/9de1490d-43e9-4dd4-b71d-2ff8b68629d8"></img>
 </details>
