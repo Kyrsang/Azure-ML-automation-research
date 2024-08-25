@@ -82,7 +82,7 @@ jobs:
     outputs:
       monitored_job_name:
 
-  register_automl:
+  deploy_endpoint_with_best_model:
     command: | 
       
       # Download the model artifact to the specified directory
@@ -90,11 +90,16 @@ jobs:
         --all --download-path /app/configs/downloaded_artifacts \
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research
-        
-      # Register the model using the pre-configured YAML file
+
+      # (Optional)
+      # Register the best model using the pre-configured YAML file  
       az ml model create -f /app/configs/best_model_settings.yml \
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research
+
+      # Deploy online endpoint with the best model  
+      az ml online-endpoint create -f /app/configs/automl_endpoint_settings.yml
+      az ml online-deployment create -f /app/configs/automl_deployment_settings.yml
       
     environment:
       image: eunsangacr.azurecr.io/azureml-with-azcli:latest
