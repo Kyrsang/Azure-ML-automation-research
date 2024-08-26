@@ -84,6 +84,10 @@ jobs:
 
   create_endpoint:
     command: | 
+
+      # Register resource provider for subscription 
+      az provider register --namespace Microsoft.MachineLearningServices
+    
       # # Define the endpoint name
       # ENDPOINT_NAME="endpoint-eunsang"
       
