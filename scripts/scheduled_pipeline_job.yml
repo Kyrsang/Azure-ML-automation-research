@@ -84,7 +84,6 @@ jobs:
 
   create_endpoint:
     command: | 
-
       # Register resource provider for subscription 
       az provider register --namespace Microsoft.MachineLearningServices
 
