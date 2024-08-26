@@ -27,10 +27,10 @@ COPY automl_settings.yml /app/configs/automl_settings.yml
 COPY best_model_settings.yml /app/configs/best_model_settings.yml
 
 # Copy endpoint config file 
-COPY automml_endpoint_settings.yml /app/configs/automml_endpoint_settings.yml
+COPY automl_endpoint_settings.yml /app/configs/automl_endpoint_settings.yml
 
 # Copy model deployment config file 
-COPY automml_deployment_settings.yml /app/configs/automml_deployment_settings.yml
+COPY automl_deployment_settings.yml /app/configs/automl_deployment_settings.yml
 
 # Copy score.py file 
 COPY score.py /app/configs/score.py
