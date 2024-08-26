@@ -25,6 +25,7 @@ jobs:
           --build-arg AZURE_CLIENT_ID=${{ secrets.AZURE_CLIENT_ID }} \
           --build-arg AZURE_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET }} \
           --build-arg AZURE_TENANT_ID=${{ secrets.AZURE_TENANT_ID }} \
+          --build-arg AZURE_SUBSCRIPTION_ID=${{ secrets.AZURE_SUBSCRIPTION_ID }} \
           -t eunsangacr.azurecr.io/azureml-with-azcli:latest \
           -f ./configs/Azure-CLI-Environment/Dockerfile ./configs/Azure-CLI-Environment
           
