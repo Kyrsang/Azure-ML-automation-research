@@ -61,8 +61,3 @@ C4Context
   <summary>Result view of `monitor_automl` step</summary>
   <img src="https://github.com/user-attachments/assets/885619ff-483d-4e84-9ec7-71b3c2340ea3"></img>
 </details>
-
-<details>
-  <summary>Result view of `deploy_endpoint_with_best_model` step</summary>
-  <img src="https://github.com/user-attachments/assets/efb2e662-e6c2-458c-bace-5404826518df"></img>
-</details>
