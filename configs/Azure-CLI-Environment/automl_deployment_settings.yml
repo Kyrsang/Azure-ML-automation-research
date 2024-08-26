@@ -1,6 +1,6 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
-name: endpoint-eunsang
-endpoint_name: system-assigned-endpoint-with-auto-ml-best-model
+name: inbrein-iris-automl-best-model-endpoint-eunsang
+endpoint_name: endpoint-eunsang
 
 model:
   path: ./downloaded_artifacts/named-outputs/best_model/
