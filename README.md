@@ -44,25 +44,8 @@ C4Context
 ```
 
 ### Tasks of `pipelineJob` in details    
-```mermaid
-flowchart TD
-    subgraph pipelineJob
-        A[prepare_dataset]
-        B[setup_automl]
-        C[monitor_automl]
-        D[deploy_endpoint_with_best_model] 
-    end 
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/ddf37442-1703-48a1-9a92-afa3fd9e8d7f">
 
-    F(datastore/iris mltable)
-    G(model training... for about 12 mins.) 
-    
-    A --> B 
-    C --> D 
-    A --> F 
-    B --> G     
-    G <--Completed---> C
-    F --> G
-```
 
 <details>
   <summary>Result view of `prepare_dataset` step</summary>
