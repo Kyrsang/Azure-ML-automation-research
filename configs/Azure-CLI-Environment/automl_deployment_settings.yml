@@ -1,5 +1,5 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
-name: inbrein-iris-automl-best-model-endpoint-eunsang
+name: model-deployment-eunsang
 endpoint_name: endpoint-eunsang
 
 model:
