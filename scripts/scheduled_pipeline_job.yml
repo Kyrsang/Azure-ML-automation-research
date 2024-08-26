@@ -98,8 +98,15 @@ jobs:
         --resource-group inbrein-azure-ml-research
 
       # Deploy online endpoint with the best model  
-      az ml online-endpoint create -f /app/configs/automl_endpoint_settings.yml
-      az ml online-deployment create -f /app/configs/automl_deployment_settings.yml
+      az ml online-endpoint create \
+        -f /app/configs/automl_endpoint_settings.yml \
+        --workspace-name inbrein-azure-ml-research-eunsang \
+        --resource-group inbrein-azure-ml-research
+      
+      az ml online-deployment create \
+        -f /app/configs/automl_deployment_settings.yml \
+        --workspace-name inbrein-azure-ml-research-eunsang \
+        --resource-group inbrein-azure-ml-research
       
     environment:
       image: eunsangacr.azurecr.io/azureml-with-azcli:latest
