@@ -4,6 +4,7 @@ FROM mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:20231002.v1
 ARG AZURE_CLIENT_ID
 ARG AZURE_CLIENT_SECRET
 ARG AZURE_TENANT_ID
+ARG AZURE_SUBSCRIPTION_ID
 
 # Install Azure CLI
 RUN apt-get update && \
@@ -40,6 +41,9 @@ RUN az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --t
 
 # Install Azure ML CLI extension
 RUN az extension add -n ml
+
+# Set active subscription 
+RUN az account set -s $AZURE_SUBSCRIPTION_ID
 
 # Verify installation
 RUN az --version
