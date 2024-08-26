@@ -50,8 +50,7 @@ flowchart TD
         A[prepare_dataset]
         B[setup_automl]
         C[monitor_automl]
-        D[register_automl] 
-        E[publish_endpoint]
+        D[deploy_endpoint_with_best_model] 
     end 
 
     F(datastore/iris mltable)
@@ -59,7 +58,6 @@ flowchart TD
     
     A --> B 
     C --> D 
-    D --> E 
     A --> F 
     B --> G     
     G <--Completed---> C
@@ -82,6 +80,6 @@ flowchart TD
 </details>
 
 <details>
-  <summary>Result view of `register_automl` step</summary>
+  <summary>Result view of `deploy_endpoint_with_best_model` step</summary>
   <img src="https://github.com/user-attachments/assets/efb2e662-e6c2-458c-bace-5404826518df"></img>
 </details>
