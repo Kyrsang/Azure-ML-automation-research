@@ -14,7 +14,7 @@ jobs:
           script: |
             // Request data goes here
             const requestBody = JSON.stringify({
-              input_data: {
+              data: {
                 columns: [
                   "c1", "c2", "c3", "c4" // Iris dataset columns
                 ],
