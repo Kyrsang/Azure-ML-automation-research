@@ -22,5 +22,5 @@ jobs:
     - name: Send Score Request
       run: |
         az ml online-endpoint invoke \
-          --name $ENDPOINT_NAME \
+          --name endpoint-eunsang \
           --request-file ./configs/Azure-CLI-Environment/iris-test.json
