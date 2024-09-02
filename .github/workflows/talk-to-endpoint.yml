@@ -13,22 +13,18 @@ jobs:
         with:
           script: |
             // Request data goes here
-            const requestBody = `[
-              {"c1": 5.0, "c2": 3.3, "c3": 1.4, "c4": 0.2, "y": "Iris-setosa"},
-              {"c1": 7.0, "c2": 3.2, "c3": 4.7, "c4": 1.4, "y": "Iris-versicolor"},
-              {"c1": 5.1, "c2": 2.5, "c3": 3.0, "c4": 1.1, "y": "Iris-versicolor"},
-              {"c1": 5.4, "c2": 3.9, "c3": 1.7, "c4": 0.4, "y": "Iris-setosa"},
-              {"c1": 4.6, "c2": 3.1, "c3": 1.5, "c4": 0.2, "y": "Iris-setosa"},
-              {"c1": 5.8, "c2": 2.6, "c3": 4.0, "c4": 1.2, "y": "Iris-versicolor"},
-              {"c1": 5.0, "c2": 3.6, "c3": 1.4, "c4": 0.2, "y": "Iris-setosa"},
-              {"c1": 5.6, "c2": 3.0, "c3": 4.5, "c4": 1.5, "y": "Iris-versicolor"},
-              {"c1": 6.5, "c2": 3.0, "c3": 5.2, "c4": 2.0, "y": "Iris-virginica"},
-              {"c1": 6.7, "c2": 3.1, "c3": 4.7, "c4": 1.5, "y": "Iris-versicolor"},
-              {"c1": 5.1, "c2": 3.8, "c3": 1.5, "c4": 0.3, "y": "Iris-setosa"},
-              {"c1": 6.3, "c2": 2.5, "c3": 4.9, "c4": 1.5, "y": "Iris-versicolor"},
-              {"c1": 6.2, "c2": 2.8, "c3": 4.8, "c4": 1.8, "y": "Iris-versicolor"},
-              {"c1": 7.2, "c2": 3.6, "c3": 6.1, "c4": 2.5, "y": "Iris-virginica"}
-            ]
+            const requestBody = `{"data": [
+                  [4.6,3.2,1.4,0.2,Iris-setosa],  
+                  [5.3,3.7,1.5,0.2,Iris-setosa],
+                  [5.0,3.3,1.4,0.2,Iris-setosa],
+                  [7.0,3.2,4.7,1.4,Iris-versicolor],
+                  [6.4,3.2,4.5,1.5,Iris-versicolor],
+                  [5.7,2.8,4.1,1.3,Iris-versicolor],
+                  [6.3,3.3,6.0,2.5,Iris-virginica],
+                  [5.8,2.7,5.1,1.9,Iris-virginica],
+                  [7.1,3.0,5.9,2.1,Iris-virginica],
+                  [6.3,2.9,5.6,1.8,Iris-virginica]
+              ]}
             `;
 
             const requestHeaders = new Headers({"Content-Type" : "application/json"});
