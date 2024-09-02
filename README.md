@@ -43,8 +43,7 @@ C4Context
 ```
 
 ### Tasks of `pipelineJob` in details    
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/ddf37442-1703-48a1-9a92-afa3fd9e8d7f">
-
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/81d27d08-f8c4-400e-b461-c146d843c17a">
 
 <details>
   <summary>Result view of `prepare_dataset` step</summary>
