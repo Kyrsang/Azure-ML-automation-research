@@ -23,4 +23,6 @@ jobs:
       run: |
         az ml online-endpoint invoke \
           --name endpoint-eunsang \
-          --request-file ./configs/Azure-CLI-Environment/iris-test.json
+          --request-file ./configs/Azure-CLI-Environment/iris-test.json \
+          --resource-group inbrein-azure-ml-research \
+          --workspace-name inbrein-azure-ml-research-eunsang
