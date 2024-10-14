@@ -30,6 +30,9 @@ COPY best_model_settings.yml /app/configs/best_model_settings.yml
 # Copy endpoint config file 
 COPY automl_endpoint_settings.yml /app/configs/automl_endpoint_settings.yml
 
+# Copy endpoint config file 
+COPY automl_endpoint_k8s_settings.yml /app/configs/automl_endpoint_k8s_settings.yml
+
 # Copy managed online endpoint deployment config file 
 COPY automl_deployment_settings.yml /app/configs/automl_deployment_settings.yml
 
