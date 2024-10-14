@@ -22,7 +22,7 @@
   <img src="https://github.com/user-attachments/assets/885619ff-483d-4e84-9ec7-71b3c2340ea3"></img>
 </details>
 
-# 2. Deploy AutoML best model to AKS (a public Kubernetes cluster scenario)
+# 2. Deploy AutoML best model to AKS (a public Kubernetes cluster scenario) ([Doc.](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-attach-kubernetes-anywhere?view=azureml-api-2))
 
 ### Index 
   1. [Prepare an Azure Kubernetes Service cluster](#1-prepare-an-azure-kubernetes-service-cluster)
