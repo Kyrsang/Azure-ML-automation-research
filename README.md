@@ -248,6 +248,6 @@ PS C:\Users> kubectl create namespace eunsang-aks-compute
 
 <details>
   <summary> Kubernetes cluster attachment view </summary>
-  <img width="100%" alt="image" src="https://github.com/user-attachments/assets/c08dee38-fccc-48bf-8d6b-c8644701bc32">
+  <img width="100%" alt="image" src="https://github.com/user-attachments/assets/fc1573e5-47a0-4896-8db3-dd4b594be853">
 </details>
 
