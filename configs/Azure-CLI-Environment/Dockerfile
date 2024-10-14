@@ -30,8 +30,11 @@ COPY best_model_settings.yml /app/configs/best_model_settings.yml
 # Copy endpoint config file 
 COPY automl_endpoint_settings.yml /app/configs/automl_endpoint_settings.yml
 
-# Copy model deployment config file 
+# Copy managed online endpoint deployment config file 
 COPY automl_deployment_settings.yml /app/configs/automl_deployment_settings.yml
+
+# Copy kubernetes cluster deployment config file 
+COPY automl_deployment_k8s_compute_settings.yml /app/configs/automl_deployment_k8s_compute_settings.yml
 
 # Copy score.py file 
 COPY score.py /app/configs/score.py
