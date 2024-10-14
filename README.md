@@ -24,11 +24,18 @@
 
 ## 2. Deploy AutoML best model to AKS (a public Kubernetes cluster scenario)
 
-### Overview 
+### Index 
   1. [Prepare an Azure Kubernetes Service cluster](#prepare-an-azure-kubernetes-service-cluster)
   2. Deploy the Azure Machine Learning cluster extension.
   3. Attach the Kubernetes cluster to your Azure Machine Learning workspace.
   4. Use the Kubernetes compute target from the CLI v2, SDK v2, or the Azure Machine Learning studio UI.
+
+### Version Table 
+|             | Version       |
+|-------------|---------------|
+| Kubernetes version | 1.29.8 |
+| Location    | Korea Central |
+| Network Conf      | kubenet |
 
 ### 1. Prepare an Azure Kubernetes Service cluster
 
@@ -104,8 +111,6 @@ CURRENT   NAME                  CLUSTER               AUTHINFO                  
   kube-system   replicaset.apps/metrics-server-7b445dd694       0         0         0       17m
   kube-system   replicaset.apps/metrics-server-7b685846d6       2         2         2       16m
   ```
-  > [1] In the command, the `-j` option directs any access to the rule `KUBE-SEP-IT2ZTR26TO4XFPTO` to jump to the `KUBE-MARK-MASQ` rule.
-
 </details>
 
 ### 2. Deploy the Azure Machine Learning extension on AKS or Arc Kubernetes cluster
@@ -132,3 +137,70 @@ az k8s-extension create `
 		InferenceRouterHA=False 
 ```
 > The parameters are set for a quick proof of concept to run various ML workloads. For more detailed deployment requirements, refer [here](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-kubernetes-extension?view=azureml-api-2&tabs=deploy-extension-with-cli#azure-machine-learning-extension-deployment---cli-examples-and-azure-portal). 
+
+<details>
+  <summary>Registration success response </summary>
+  <br>
+  
+  ```json
+{
+  "aksAssignedIdentity": {
+    "principalId": "cc75d747-af29-4cf7-b8a6-1115c1c0c521",
+    "tenantId": null,
+    "type": null
+  },
+  "autoUpgradeMinorVersion": true,
+  "configurationProtectedSettings": {},
+  "configurationSettings": {
+    "InferenceRouterHA": "False",
+    "allowInsecureConnections": "True",
+    "clusterId": "/subscriptions/e6b2576a-d64f-4ef2-a429-ec3fde2a21db/resourceGroups/inbrein-azure-ml-research/providers/Microsoft.ContainerService/managedClusters/eunsang-aks-cluster",
+    "clusterPurpose": "DevTest",
+    "cluster_name": "/subscriptions/e6b2576a-d64f-4ef2-a429-ec3fde2a21db/resourceGroups/inbrein-azure-ml-research/providers/Microsoft.ContainerService/managedClusters/eunsang-aks-cluster",
+    "cluster_name_friendly": "eunsang-aks-cluster",
+    "domain": "koreacentral.cloudapp.azure.com",
+    "enableInference": "True",
+    "enableTraining": "True",
+    "inferenceRouterHA": "false",
+    "inferenceRouterServiceType": "LoadBalancer",
+    "jobSchedulerLocation": "koreacentral",
+    "location": "koreacentral",
+    "nginxIngress.enabled": "true",
+    "prometheus.prometheusSpec.externalLabels.cluster_name": "/subscriptions/e6b2576a-d64f-4ef2-a429-ec3fde2a21db/resourceGroups/inbrein-azure-ml-research/providers/Microsoft.ContainerService/managedClusters/eunsang-aks-cluster",
+    "relayserver.enabled": "false",
+    "servicebus.enabled": "false"
+  },
+  "currentVersion": "1.1.61",
+  "customLocationSettings": null,
+  "errorInfo": null,
+  "extensionType": "microsoft.azureml.kubernetes",
+  "id": "/subscriptions/e6b2576a-d64f-4ef2-a429-ec3fde2a21db/resourceGroups/inbrein-azure-ml-research/providers/Microsoft.ContainerService/managedClusters/eunsang-aks-cluster/providers/Microsoft.KubernetesConfiguration/extensions/eunsang-aks-cluster-ml-extension",
+  "identity": null,
+  "isSystemExtension": false,
+  "name": "eunsang-aks-cluster-ml-extension",
+  "packageUri": null,
+  "plan": null,
+  "provisioningState": "Succeeded",
+  "releaseTrain": "stable",
+  "resourceGroup": "inbrein-azure-ml-research",
+  "scope": {
+    "cluster": {
+      "releaseNamespace": "azureml"
+    },
+    "namespace": null
+  },
+  "statuses": [],
+  "systemData": {
+    "createdAt": "2024-10-14T04:20:28.942789+00:00",
+    "createdBy": null,
+    "createdByType": null,
+    "lastModifiedAt": "2024-10-14T04:20:28.942789+00:00",
+    "lastModifiedBy": null,
+    "lastModifiedByType": null
+  },
+  "type": "Microsoft.KubernetesConfiguration/extensions",
+  "version": null
+}
+  ```
+</details>
+
