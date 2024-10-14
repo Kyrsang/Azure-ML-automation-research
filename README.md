@@ -139,7 +139,7 @@ az k8s-extension create `
 > The parameters are set for a quick proof of concept to run various ML workloads. For more detailed deployment requirements, refer [here](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-kubernetes-extension?view=azureml-api-2&tabs=deploy-extension-with-cli#azure-machine-learning-extension-deployment---cli-examples-and-azure-portal). 
 
 <details>
-  <summary>Registration success response </summary>
+  <summary>Registration success response (view details) </summary>
   <br>
   
   ```json
@@ -204,3 +204,24 @@ az k8s-extension create `
   ```
 </details>
 
+You will see the Azure Machine Learning extensions deployed on the kubernetes cluster under `azureml` namespace:  
+
+```powershell
+PS C:\Users> kubectl get pods -n azureml
+NAME                                                              READY   STATUS      RESTARTS   AGE
+aml-operator-6fbbddb96f-s27l2                                     2/2     Running     0          8m19s
+amlarc-identity-controller-7dd4f65648-f82sn                       2/2     Running     0          8m19s
+amlarc-identity-proxy-84dddf8f67-l42jc                            2/2     Running     0          8m19s
+azureml-fe-v2-5fb6689988-6kqvj                                    4/4     Running     0          8m19s
+azureml-ingress-nginx-controller-5bff665f9-bbjrw                  1/1     Running     0          8m19s
+eunsang-aks-cluster-ml-extension-kube-state-metrics-68784fm9px4   1/1     Running     0          8m19s
+eunsang-aks-cluster-ml-extension-prometheus-operator-654c49ps4x   1/1     Running     0          8m19s
+gateway-5cb9cdbd49-k9sxm                                          2/2     Running     0          8m19s
+healthcheck                                                       0/1     Completed   0          9m27s
+inference-operator-controller-manager-65f5f74987-b4cxc            2/2     Running     0          8m19s
+metrics-controller-manager-bf7cfb5df-4nxm5                        2/2     Running     0          8m19s
+prometheus-prom-prometheus-0                                      2/2     Running     0          7m55s
+volcano-admission-cd84d5769-pfhz6                                 1/1     Running     0          8m19s
+volcano-controllers-76f648b6b4-bx4hx                              1/1     Running     0          8m19s
+volcano-scheduler-58d96746b9-n4h7h                                1/1     Running     0          8m19s
+```
