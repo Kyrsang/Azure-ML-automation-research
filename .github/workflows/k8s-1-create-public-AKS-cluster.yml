@@ -1,5 +1,4 @@
-name: Azure ML Scheduling  
-
+name: Create a public AKS cluster 
 on:
   workflow_dispatch:
 
