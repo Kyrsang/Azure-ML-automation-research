@@ -27,7 +27,7 @@
 ### Index 
   1. [Prepare an Azure Kubernetes Service cluster](#1-prepare-an-azure-kubernetes-service-cluster)
   2. [Deploy the Azure Machine Learning cluster extension](#2-deploy-the-azure-machine-learning-extension-on-aks-or-arc-kubernetes-cluster)
-  3. Attach the Kubernetes cluster to your Azure Machine Learning workspace.
+  3. [Attach the Kubernetes cluster to your Azure Machine Learning workspace](#3-attach-the-kubernetes-cluster-to-your-azure-machine-learning-workspace)
   4. Use the Kubernetes compute target from the CLI v2, SDK v2, or the Azure Machine Learning studio UI.
 
 ### Version Table 
@@ -225,3 +225,24 @@ volcano-admission-cd84d5769-pfhz6                                 1/1     Runnin
 volcano-controllers-76f648b6b4-bx4hx                              1/1     Running     0          8m19s
 volcano-scheduler-58d96746b9-n4h7h                                1/1     Running     0          8m19s
 ```
+
+## 3. Attach the Kubernetes cluster to your Azure Machine Learning workspace
+
+Attach an AKS cluster to Azure Machine Learning workspace by running: 
+```powershell 
+az ml compute attach `
+	--resource-group inbrein-azure-ml-research `
+	--workspace-name inbrein-azure-ml-research-eunsang `
+	--type Kubernetes `
+	--name k8s-compute `
+	--resource-id "/subscriptions/e6b2576a-d64f-4ef2-a429-ec3fde2a21db/resourceGroups/inbrein-azure-ml-research/providers/Microsoft.ContainerService/managedclusters/eunsang-aks-cluster" `
+	--identity-type SystemAssigned `
+	--namespace eunsang-aks-compute `
+	--no-wait
+```
+
+<details>
+  <summary> Kubernetes cluster attachment view </summary>
+  <img width="100%" alt="image" src="https://github.com/user-attachments/assets/c08dee38-fccc-48bf-8d6b-c8644701bc32">
+</details>
+
