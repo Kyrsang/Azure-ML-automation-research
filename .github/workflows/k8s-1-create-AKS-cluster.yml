@@ -20,6 +20,10 @@ jobs:
       uses: azure/login@v2.1.0
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Register resource providers for subscription 
+      run: |
+        az provider register --namespace Microsoft.ContainerService
     
     - name: Create an AKS Cluster  
       run: |
