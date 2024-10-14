@@ -1,0 +1,38 @@
+name: Azure ML Scheduling  
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-kubernetes-cluster-on-AKS:   
+    env: 
+      RESOURCE_GROUP_NAME: inbrein-azure-ml-research
+      REGION: koreacentral
+      AKS_CLUSTER_NAME: eunsang-aks-cluster
+      DNS_LABEL: eunsang-aks-dns-label
+  
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.1.7
+
+    - name: Log in to Azure CLI
+      uses: azure/login@v2.1.0
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Create an AKS Cluster  
+      run: |
+        az aks create --resource-group $RESOURCE_GROUP_NAME \
+          --name $AKS_CLUSTER_NAME \
+          --node-count 1 \
+          --generate-ssh-keys
+    
+    - name: Get AKS Credentials 
+      run: |
+        az aks get-credentials \
+          --resource-group $RESOURCE_GROUP_NAME \
+          --name $AKS_CLUSTER_NAME
+
+    - name: Log out from Azure CLI
+      run: az logout
