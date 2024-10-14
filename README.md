@@ -1,6 +1,6 @@
 # Azure-ML-automation-research
 
-# 1. Deploy AutoML best model to an online endpoint
+# 1. Deploy AutoML best model to a managed online endpoint
 
 <details>
   <summary> <code>pipelineJob</code> details</summary>
