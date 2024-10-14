@@ -33,8 +33,7 @@ jobs:
         az aks get-credentials \
           --resource-group $RESOURCE_GROUP_NAME \
           --name $AKS_CLUSTER_NAME \
-          --overwrite-existing --admin \
-          > aks-credentials.log 2>&1 || true
+          --overwrite-existing
 
     - name: Save AKS Credentials as Artifact
       run: |
