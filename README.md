@@ -22,11 +22,14 @@
   <img src="https://github.com/user-attachments/assets/885619ff-483d-4e84-9ec7-71b3c2340ea3"></img>
 </details>
 
-## 2. Deploy AutoML best model to AKS 
+## 2. Deploy AutoML best model to AKS (a public Kubernetes cluster scenario)
 
+### Overview 
+  1. [Prepare an Azure Kubernetes Service cluster](#prepare-an-azure-kubernetes-service-cluster)
+  2. Deploy the Azure Machine Learning cluster extension.
+  3. Attach the Kubernetes cluster to your Azure Machine Learning workspace.
+  4. Use the Kubernetes compute target from the CLI v2, SDK v2, or the Azure Machine Learning studio UI.
 
-### 2.1 Create and attach an Azure Kubernetes Service cluster with v1 ([Doc.](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-attach-kubernetes?view=azureml-api-1&tabs=python%2Cakscreate))
+### Prepare an Azure Kubernetes Service cluster
 
-
-
-### 2.2 Deploy a model to an Azure Kubernetes Service cluster with v1 ([Doc.](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-azure-kubernetes-service?view=azureml-api-1&viewFallbackFrom=azureml-api-2&tabs=python))
+### Deploy the Azure Machine Learning extension on AKS or Arc Kubernetes cluster
