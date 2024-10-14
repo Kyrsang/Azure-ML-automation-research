@@ -8,8 +8,8 @@ jobs:
     env: 
       RESOURCE_GROUP_NAME: inbrein-azure-ml-research
       REGION: koreacentral
-      AKS_CLUSTER_NAME: eunsang-aks-cluster
-      DNS_LABEL: eunsang-aks-dns-label
+      AKS_CLUSTER_NAME: eunsang-aks-cluster-public
+      DNS_LABEL: eunsang-aks-dns-label-public 
   
     runs-on: ubuntu-latest
     steps:
