@@ -1,4 +1,4 @@
-name: Azure ML Scheduling  
+name: AKS Cluster Create 
 
 on:
   workflow_dispatch:
