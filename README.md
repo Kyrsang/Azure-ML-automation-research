@@ -1,6 +1,6 @@
 # Azure-ML-automation-research
 
-## 1. Deploy AutoML best model to an online endpoint
+# 1. Deploy AutoML best model to an online endpoint
 
 <details>
   <summary> <code>pipelineJob</code> details</summary>
@@ -22,11 +22,11 @@
   <img src="https://github.com/user-attachments/assets/885619ff-483d-4e84-9ec7-71b3c2340ea3"></img>
 </details>
 
-## 2. Deploy AutoML best model to AKS (a public Kubernetes cluster scenario)
+# 2. Deploy AutoML best model to AKS (a public Kubernetes cluster scenario)
 
 ### Index 
-  1. [Prepare an Azure Kubernetes Service cluster](#prepare-an-azure-kubernetes-service-cluster)
-  2. Deploy the Azure Machine Learning cluster extension.
+  1. [Prepare an Azure Kubernetes Service cluster](#1-prepare-an-azure-kubernetes-service-cluster)
+  2. [Deploy the Azure Machine Learning cluster extension](#2-deploy-the-azure-machine-learning-extension-on-aks-or-arc-kubernetes-cluster)
   3. Attach the Kubernetes cluster to your Azure Machine Learning workspace.
   4. Use the Kubernetes compute target from the CLI v2, SDK v2, or the Azure Machine Learning studio UI.
 
@@ -37,7 +37,7 @@
 | Location    | Korea Central |
 | Network Conf      | kubenet |
 
-### 1. Prepare an Azure Kubernetes Service cluster
+## 1. Prepare an Azure Kubernetes Service cluster
 
 Create a public AKS cluster by running a [workflow](https://github.com/Kyrsang/Azure-ML-automation-research/blob/main/.github/workflows/k8s-1-create-public-AKS-cluster.yml) that creates a cluster and upload a `kubeconfig` file. 
 
@@ -113,7 +113,7 @@ CURRENT   NAME                  CLUSTER               AUTHINFO                  
   ```
 </details>
 
-### 2. Deploy the Azure Machine Learning extension on AKS or Arc Kubernetes cluster
+## 2. Deploy the Azure Machine Learning extension on AKS or Arc Kubernetes cluster
 
 Register resource providers for subscription by running: 
 ```
