@@ -1,4 +1,4 @@
-name: Create a public AKS cluster 
+name: "[2] - Create Public AKS Cluster" 
 on:
   workflow_dispatch:
 
