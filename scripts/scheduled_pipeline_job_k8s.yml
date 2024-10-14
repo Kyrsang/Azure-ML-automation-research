@@ -132,7 +132,7 @@ jobs:
 
       # Define the deployment name
       DEPLOYMENT_NAME="model-deployment-eunsang"
-      ENDPOINT_NAME="endpoint-eunsang"
+      ENDPOINT_NAME="endpoint-eunsang-k8s"
 
       # Check if the deployment already exists
       az ml online-deployment show --endpoint-name $ENDPOINT_NAME \
