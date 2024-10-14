@@ -110,15 +110,25 @@ CURRENT   NAME                  CLUSTER               AUTHINFO                  
 
 ### 2. Deploy the Azure Machine Learning extension on AKS or Arc Kubernetes cluster
 
+Register resource providers for subscription by running: 
+```
+az provider register --namespace Microsoft.KubernetesConfiguration
+```
+
 Install Azure Machine Learning extension on the cluster by running: 
 ```powershell 
 az k8s-extension create `
 	--name eunsang-aks-cluster-ml-extension `
 	--extension-type Microsoft.AzureML.Kubernetes `
-	--config enableTraining=True enableInference=True inferenceRouterServiceType=LoadBalancer allowInsecureConnections=True InferenceRouterHA=False `
 	--cluster-type managedClusters `
 	--cluster-name eunsang-aks-cluster `
-	--resource-group inbrein-azure-ml-research`
-	--scope cluster
+	--resource-group inbrein-azure-ml-research `
+	--scope cluster `
+	--config `
+		enableTraining=True `
+		enableInference=True `
+		inferenceRouterServiceType=LoadBalancer `
+		allowInsecureConnections=True `
+		InferenceRouterHA=False 
 ```
 > The parameters are set for a quick proof of concept to run various ML workloads. For more detailed deployment requirements, refer [here](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-kubernetes-extension?view=azureml-api-2&tabs=deploy-extension-with-cli#azure-machine-learning-extension-deployment---cli-examples-and-azure-portal). 
