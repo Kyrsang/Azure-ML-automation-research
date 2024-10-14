@@ -31,12 +31,6 @@ jobs:
           --name $AKS_CLUSTER_NAME \
           --node-count 1 \
           --generate-ssh-keys
-    
-    - name: Get AKS Credentials 
-      run: |
-        az aks get-credentials \
-          --resource-group $RESOURCE_GROUP_NAME \
-          --name $AKS_CLUSTER_NAME
 
     - name: Log out from Azure CLI
       run: az logout
