@@ -1,4 +1,4 @@
-name: AKS Cluster Create 
+name: Azure ML Scheduling  
 
 on:
   workflow_dispatch:
@@ -8,8 +8,8 @@ jobs:
     env: 
       RESOURCE_GROUP_NAME: inbrein-azure-ml-research
       REGION: koreacentral
-      AKS_CLUSTER_NAME: eunsang-aks-cluster-public
-      DNS_LABEL: eunsang-aks-dns-label-public 
+      AKS_CLUSTER_NAME: eunsang-aks-cluster
+      DNS_LABEL: eunsang-aks-dns-label
   
     runs-on: ubuntu-latest
     steps:
@@ -20,10 +20,6 @@ jobs:
       uses: azure/login@v2.1.0
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Register resource providers for subscription 
-      run: |
-        az provider register --namespace Microsoft.ContainerService
     
     - name: Create an AKS Cluster  
       run: |
@@ -31,6 +27,25 @@ jobs:
           --name $AKS_CLUSTER_NAME \
           --node-count 1 \
           --generate-ssh-keys
+    
+    - name: Get AKS Credentials 
+      run: |
+        az aks get-credentials \
+          --resource-group $RESOURCE_GROUP_NAME \
+          --name $AKS_CLUSTER_NAME \
+          --overwrite-existing --admin \
+          > aks-credentials.log 2>&1 || true
+
+    - name: Save AKS Credentials as Artifact
+      run: |
+        # Save the kubeconfig to the current directory
+        cp ~/.kube/config ./kubeconfig
+
+    - name: Upload AKS Credentials Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: aks-kubeconfig
+        path: kubeconfig
 
     - name: Log out from Azure CLI
       run: az logout
