@@ -1,4 +1,4 @@
-name: Azure ML Scheduling  
+name: Create Azure ML Scheduling Infra   
 
 on:
   workflow_dispatch:
