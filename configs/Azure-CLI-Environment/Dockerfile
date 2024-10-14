@@ -37,7 +37,7 @@ COPY automl_endpoint_k8s_settings.yml /app/configs/automl_endpoint_k8s_settings.
 COPY automl_deployment_settings.yml /app/configs/automl_deployment_settings.yml
 
 # Copy kubernetes cluster deployment config file 
-COPY automl_deployment_k8s_compute_settings.yml /app/configs/automl_deployment_k8s_compute_settings.yml
+COPY automl_deployment_k8s_settings.yml /app/configs/automl_deployment_k8s_settings.yml
 
 # Copy score.py file 
 COPY score.py /app/configs/score.py
