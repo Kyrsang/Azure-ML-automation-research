@@ -241,6 +241,11 @@ az ml compute attach `
 	--no-wait
 ```
 
+You need to ensure that a namespace for Azure Machine Learning workloads exists on the cluster. The following command will effecively create a new namespace for our project:  
+```powershell 
+PS C:\Users> kubectl create namespace eunsang-aks-compute
+```
+
 <details>
   <summary> Kubernetes cluster attachment view </summary>
   <img width="100%" alt="image" src="https://github.com/user-attachments/assets/c08dee38-fccc-48bf-8d6b-c8644701bc32">
