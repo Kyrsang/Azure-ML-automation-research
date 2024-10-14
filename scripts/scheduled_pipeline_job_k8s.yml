@@ -89,7 +89,7 @@ jobs:
       az provider register --namespace Microsoft.PolicyInsights
 
       # Define the endpoint name
-      ENDPOINT_NAME="endpoint-eunsang"
+      ENDPOINT_NAME="endpoint-eunsang-k8s"
       
       # Check if the endpoint already exists by capturing the exit code
       az ml online-endpoint show --name $ENDPOINT_NAME \
