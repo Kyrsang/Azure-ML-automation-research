@@ -39,6 +39,15 @@
 
 ## 1. Prepare an Azure Kubernetes Service cluster
 
+Create a dedicated Service Principal for the project
+```powershell
+    az ad sp create-for-rbac --name "{SERVICE_PRINCIPAL_NAME}" `
+     --role contributor `
+     --scopes /subscriptions/{SUBSCRIPTION_ID} `
+     --sdk-auth
+```
+> This will then return a response of credentials in JSON format. Save the JSON as a repository secret with the name of `AZURE_CREDENTIALS`, which will then later be used in Azure CLI login in the GitHub workflow. 
+
 Create a public AKS cluster by running a [workflow](https://github.com/Kyrsang/Azure-ML-automation-research/blob/main/.github/workflows/k8s-1-create-public-AKS-cluster.yml) that creates a cluster and upload a `kubeconfig` file. 
 
 Then download the `kubeconfig` file that is uploaded as an artifact from the result page of the workflow's run:
