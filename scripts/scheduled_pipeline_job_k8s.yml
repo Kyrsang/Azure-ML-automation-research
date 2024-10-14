@@ -84,9 +84,6 @@ jobs:
   
   deploy_best_model:
     command: | 
-      # Wait for the endpoint creation/update to complete
-      echo "Received trigger: $(cat ${{inputs.endpoint_trigger}}/endpoint_trigger.txt)"
-
       # Download the model artifact to the specified directory
       az ml job download --name $(cat ${{inputs.monitored_job_name}}/job_name.txt) \
         --all --download-path /app/configs/downloaded_artifacts \
