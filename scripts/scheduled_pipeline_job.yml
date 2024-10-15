@@ -130,9 +130,6 @@ jobs:
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research
 
-      # Resolve version mismatches  
-      sed -i 's/numpy=1.23.5/numpy=1.22.0/' ./downloaded_artifacts/named-outputs/best_model/conda.yaml
-
       # Define the deployment name
       DEPLOYMENT_NAME="model-deployment-eunsang"
       ENDPOINT_NAME="endpoint-eunsang"
