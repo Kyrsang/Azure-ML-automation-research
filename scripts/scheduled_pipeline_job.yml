@@ -130,6 +130,9 @@ jobs:
         --workspace-name inbrein-azure-ml-research-eunsang \
         --resource-group inbrein-azure-ml-research
 
+      # Change pytorch-cuda version in conda.yaml
+      sed -i 's/pytorch-cuda=12.1/pytorch-cuda=11.8/' ./downloaded_artifacts/named-outputs/best_model/conda.yaml
+
       # Define the deployment name
       DEPLOYMENT_NAME="model-deployment-eunsang"
       ENDPOINT_NAME="endpoint-eunsang"
