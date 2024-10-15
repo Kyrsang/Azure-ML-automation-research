@@ -28,7 +28,7 @@
   1. [Prepare an Azure Kubernetes Service cluster](#1-prepare-an-azure-kubernetes-service-cluster)
   2. [Deploy the Azure Machine Learning cluster extension](#2-deploy-the-azure-machine-learning-extension-on-aks-or-arc-kubernetes-cluster)
   3. [Attach the Kubernetes cluster to your Azure Machine Learning workspace](#3-attach-the-kubernetes-cluster-to-your-azure-machine-learning-workspace)
-  4. Use the Kubernetes compute target from the CLI v2, SDK v2, or the Azure Machine Learning studio UI.
+  4. [Use the Kubernetes compute target from the CLI v2, SDK v2, or the Azure Machine Learning studio UI](#4-use-the-kubernetes-compute-target-from-the-cli-v2-sdk-v2-or-the-azure-machine-learning-studio-ui)
 
 ### Version Table 
 |             | Version       |
@@ -259,4 +259,18 @@ PS C:\Users> kubectl create namespace eunsang-aks-compute
   <summary> Kubernetes cluster attachment view </summary>
   <img width="100%" alt="image" src="https://github.com/user-attachments/assets/fc1573e5-47a0-4896-8db3-dd4b594be853">
 </details>
+
+## 4. Use the Kubernetes compute target from the CLI v2, SDK v2, or the Azure Machine Learning studio UI
+
+The endpoint will use the Kubernetes cluster as the compute resource, as shown in the snippet below:
+```yaml 
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json
+name: endpoint-eunsang-k8s
+auth_mode: key
+compute: azureml:k8s-compute
+identity:
+  type: system_assigned
+```
+
+Create a pipeline schedule by running a [workflow](https://github.com/Kyrsang/Azure-ML-automation-research/blob/main/.github/workflows/k8s-2-azure-ml-pipeline-infra.yml) and run the scheduled job on Azure Machine Learning UI. 
 
