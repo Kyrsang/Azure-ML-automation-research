@@ -131,7 +131,7 @@ jobs:
       az ml workspace update \
         --resource-group inbrein-azure-ml-research \
         --name inbrein-azure-ml-research-eunsang \
-        --image-build-compute azureml:k8s-compute
+        --image-build-compute azureml:eunsang-ml-research
         
       # Wait for the endpoint creation/update to complete
       echo "Received trigger: $(cat ${{inputs.endpoint_trigger}}/endpoint_trigger.txt)"
