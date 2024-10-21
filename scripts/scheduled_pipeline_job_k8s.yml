@@ -121,6 +121,18 @@ jobs:
   
   deploy_best_model:
     command: | 
+      
+      # Sync keys for dependent resources (TrackingID#2410180030000685 - [방법1])
+      az ml workspace sync-keys \
+        --resource-group inbrein-azure-ml-research \
+        --name inbrein-azure-ml-research-eunsang
+      
+      # Specify image build compute resource (TrackingID#2410180030000685 - [방법2])
+      az ml workspace update \
+        --resource-group inbrein-azure-ml-research \
+        --name inbrein-azure-ml-research-eunsang \
+        --image-build-compute azureml:k8s-compute
+        
       # Wait for the endpoint creation/update to complete
       echo "Received trigger: $(cat ${{inputs.endpoint_trigger}}/endpoint_trigger.txt)"
 
