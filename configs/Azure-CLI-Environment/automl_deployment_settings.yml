@@ -15,6 +15,3 @@ environment:
 
 instance_type: Standard_E2s_v3
 instance_count: 1
-initial_delay: 120 # 2분 
-timeout: 180 # 3분
-failure_threshold: 60 
