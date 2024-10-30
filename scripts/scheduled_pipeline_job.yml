@@ -126,11 +126,6 @@ jobs:
       az ml workspace sync-keys \
         --resource-group inbrein-azure-ml-research \
         --name inbrein-azure-ml-research-eunsang
-        
-      # Sync keys for dependent resources
-      az ml workspace sync-keys \
-        --resource-group inbrein-azure-ml-research \
-        --name inbrein-azure-ml-research-eunsang
       
       # Wait for the endpoint creation/update to complete
       echo "Received trigger: $(cat ${{inputs.endpoint_trigger}}/endpoint_trigger.txt)"
