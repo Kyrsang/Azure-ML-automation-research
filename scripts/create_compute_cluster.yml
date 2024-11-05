@@ -1,7 +1,7 @@
 $schema: https://azuremlschemas.azureedge.net/latest/amlCompute.schema.json 
 name: eunsang-ml-research
 type: amlcompute
-size: Standard_DS3_v2  # TrackingID#2410180030000685
+size: Standard_D4d_v5  # TrackingID#2410180030000685
 min_instances: 0
 max_instances: 2
 idle_time_before_scale_down: 1200
